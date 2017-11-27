@@ -43,6 +43,32 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.13</version>
+				<configuration>
+					<!--指定Docker镜像的完整名称，其中${project.groupId}为仓库名，${project.artifactId}为镜像名，${project.version}为标签名-->
+					<imageName>
+						${project.groupId}/${project.artifactId}:${project.version}
+					</imageName>
+					<!--指定Dockerfile文件所在的目录，指定${project.build.outputDirectory}是为了读取经Maven资源过滤后的Dockerfile文件，该文件中的@project.build.finalName@占位符此时已经被替换为实际内容-->
+					<dockerDirectory>
+						${project.build.outputDirectory}
+					</dockerDirectory>
+					<resources>
+						<resource>
+							<!--指定需要复制的根目录，其中${project.build.directory}表示target目录-->
+							<directory>
+								${project.build.directory}
+							</directory>
+							<!--用于指定需要赋值的文件，即为Maven打包后生成的jar文件-->
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
