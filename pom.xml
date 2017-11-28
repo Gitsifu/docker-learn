@@ -5,7 +5,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>docker-learn</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>v1.0</version>
 	<packaging>jar</packaging>
 
 	<name>docker-learn</name>
@@ -38,6 +38,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>demo</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -47,13 +48,16 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.13</version>
+				<version>0.4.14</version>
 				<configuration>
-					<!--指定Docker镜像的完整名称，其中${project.groupId}为仓库名，${project.artifactId}为镜像名，${project.version}为标签名-->
+					<!--指定Docker镜像的完整名称，其中${project.groupId}为仓库名，
+					${project.artifactId}为镜像名，${project.version}为标签名-->
 					<imageName>
 						${project.groupId}/${project.artifactId}:${project.version}
 					</imageName>
-					<!--指定Dockerfile文件所在的目录，指定${project.build.outputDirectory}是为了读取经Maven资源过滤后的Dockerfile文件，该文件中的@project.build.finalName@占位符此时已经被替换为实际内容-->
+					<!--指定Dockerfile文件所在的目录，指定${project.build.outputDirectory}
+					是为了读取经Maven资源过滤后的Dockerfile文件，
+					该文件中的@project.build.finalName@占位符此时已经被替换为实际内容-->
 					<dockerDirectory>
 						${project.build.outputDirectory}
 					</dockerDirectory>
