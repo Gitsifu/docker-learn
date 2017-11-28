@@ -48,7 +48,7 @@
 					<!--Dockerfile文件名称-->
 					<include>Dockerfile</include>
 				</includes>
-				<!--<targetPath>../docker</targetPath>-->
+				git push origin --delete tag
 			</resource>
 		</resources>
 
