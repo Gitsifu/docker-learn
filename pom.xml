@@ -38,7 +38,21 @@
 	</dependencies>
 
 	<build>
-		<finalName>demo</finalName>
+
+		<resources><!-- 使用@@站位符，输出Dockerfile至docker文件夹 -->
+			<resource>
+				<!--指定Dockerfile目录-->
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<!--Dockerfile文件名称-->
+					<include>Dockerfile</include>
+				</includes>
+				<targetPath>../docker</targetPath>
+			</resource>
+		</resources>
+
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
