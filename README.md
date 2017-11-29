@@ -41,4 +41,6 @@ daocloud官网：[https://daocloud.io](https://daocloud.io)
 
 ![图三](https://github.com/Gitsifu/docker-learn/tree/master/src/main/resources/static/4.png)
 
+**注意：**
+
 源码中的static目录中的图片请忽视，即上面的图。
